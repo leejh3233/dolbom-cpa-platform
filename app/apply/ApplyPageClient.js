@@ -159,7 +159,7 @@ export default function ApplyPageClient() {
               width: "100%",
               padding: "8px 10px",
               borderRadius: "6px",
-              border: "1px solid "#ccc",
+              border: "1px solid #ccc",
               fontSize: "14px",
             }}
           />
