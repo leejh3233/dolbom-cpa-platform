@@ -1,7 +1,10 @@
-"use client";
-
+import { Suspense } from "react";
 import RefPageClient from "./RefPageClient";
 
 export default function RefPage() {
-  return <RefPageClient />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RefPageClient />
+    </Suspense>
+  );
 }
