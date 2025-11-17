@@ -3,17 +3,17 @@
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function RefPage(): JSX.Element {
+export default function RefPage() {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
 
   useEffect(() => {
     if (!code) return;
 
-    // 직원 코드 쿠키 저장 (30일 유지)
+    // 직원 코드 쿠키 저장 (예: ref=ljh_bs)
     document.cookie = `ref=${code}; path=/; max-age=2592000`;
 
-    // 0.2초 뒤 카카오채널로 이동
+    // 0.2초 뒤 카카오채널 이동
     const timer = setTimeout(() => {
       window.location.href = "https://pf.kakao.com/_UMyBK/chat";
     }, 200);
