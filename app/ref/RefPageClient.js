@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function RefPage() {
+export default function RefPageClient() {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
 
