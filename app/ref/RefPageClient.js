@@ -1,39 +1,38 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function RefPageClient() {
-  const searchParams = useSearchParams();
-  const code = searchParams.get("code");
+  const [code, setCode] = useState("");
+
+  // URL 파라미터 읽기 (CSR 전용 방식)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const refCode = params.get("code") || "";
+      setCode(refCode);
+    }
+  }, []);
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>직원 코드 확인</h1>
+      <h2>직원 코드 확인 페이지</h2>
+      <p>code: {code}</p>
 
-      {!code && (
-        <p>잘못된 접근입니다. 직원 코드가 없습니다.</p>
-      )}
-
-      {code && (
-        <>
-          <p>직원 코드: <strong>{code}</strong></p>
-
-          <Link
-            href={`/apply?staff=${code}`}
-            style={{
-              display: "inline-block",
-              marginTop: "20px",
-              padding: "10px 20px",
-              background: "green",
-              color: "white",
-              borderRadius: "6px"
-            }}
-          >
-            상담 신청하러 가기
-          </Link>
-        </>
-      )}
+      <a
+        href={`https://pf.kakao.com/_UMyBK/chat?ref=${code}`}
+        target="_blank"
+        style={{
+          display: "inline-block",
+          marginTop: "20px",
+          padding: "10px 16px",
+          background: "#00b900",
+          color: "white",
+          borderRadius: "8px",
+        }}
+      >
+        카카오톡 상담 바로가기
+      </a>
     </div>
   );
 }
