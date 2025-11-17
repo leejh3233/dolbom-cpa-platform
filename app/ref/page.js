@@ -1,10 +1,6 @@
-"use client";
+export const dynamic = "force-dynamic";
 
-import dynamic from "next/dynamic";
-
-const RefPageClient = dynamic(() => import("./RefPageClient"), {
-  ssr: false,
-});
+import RefPageClient from "./RefPageClient";
 
 export default function RefPage() {
   return <RefPageClient />;
