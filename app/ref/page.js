@@ -1,10 +1,11 @@
-import { Suspense } from "react";
-import RefPageClient from "./RefPageClient";
+"use client";
+
+import dynamic from "next/dynamic";
+
+const RefPageClient = dynamic(() => import("./RefPageClient"), {
+  ssr: false,
+});
 
 export default function RefPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <RefPageClient />
-    </Suspense>
-  );
+  return <RefPageClient />;
 }
